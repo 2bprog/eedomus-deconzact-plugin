@@ -1,1 +1,0 @@
-git submodule add https://github.com/2bprog/eedomus-deconz-php php
