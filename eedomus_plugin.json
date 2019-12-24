@@ -40,14 +40,14 @@
 			"description": "",
 			"xtype": "displayfield",
 			"field": "style: 'padding: 3px;', value: 'Cliquez <a href=\\'javascript:window.open(\"https://secure.eedomus.com/script_proxy/?exec=2B_deconzlist.php&ip=\"+document.getElementById(\"periph_param[`DZIP`]\").value + \"&key=\" +document.getElementById(\"periph_param[`DZAPIKEY`]\").value + \"&cmd=list\" + \"&p1=lights&p2=\", \"width=600,height=400\");\\'>ici pour lister les identifiants</a>'"
-		}
+		},
 		{
 			"parameter": "DZMODEL",
-			"description": "Modéle de pilotage",
+			"description": "Modèle d'actionneur",
 			"xtype": "combo",
 			"default_value": "1",
 			"field": "width:200, allowBlank:false, store:[[1, 'Prise électrique'] , [2,'Ampoule standard'], [3, 'Ampoule avec spectre blanc'], [4, ' Ampoule RGBW']], triggerAction: 'all'"
-		},
+		}
 	],
 	"scripts": [
 		{
