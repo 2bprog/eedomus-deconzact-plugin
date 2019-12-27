@@ -2,7 +2,7 @@
 
 Plugin eedomus pour piloter les actionneurs deCONZ
 
-## Type d'actionneur géré
+## Actionneurs gérés
 
 1. Prise (On / Off) 
 2. Ampoule (On / Off / Luminosité   )
