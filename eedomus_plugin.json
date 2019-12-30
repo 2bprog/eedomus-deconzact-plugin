@@ -2,9 +2,9 @@
 	"plugin_id": "bbdeconzact",
 	"name_fr": "Actionneurs - deConz",
 	"icon": "deconzact.png",
-	"version": "0.5.0",
+	"version": "0.5.1",
 	"creation_date": "2019-11-21",
-	"modification_date": "2019-12-27",
+	"modification_date": "2019-12-30",
 	"author": "Benjamin B.<br><a target='_blank' href='https://github.com/2bprog/eedomus-deconzact-plugin'>Sources sur github <img src='/img/external.png'></a>",
 	"description_fr": "[DEV] - Création d'un périphérique deConz de type actionneur",
 	"description_en": "",
@@ -40,7 +40,14 @@
 			"description": "Modèle d'actionneur",
 			"xtype": "combo",
 			"default_value": "1",
-			"field": "width:200, allowBlank:false, store:[[1, 'Prise électrique'] , [2,'Ampoule standard'], [3, 'Ampoule Spectre blanc'],[4, ' Ampoule RGBW']], triggerAction: 'all'"
+			"field": "width:200, allowBlank:false, store:[[1, 'Prise électrique'] , [2,'Ampoule standard'], [3, 'Ampoule Spectre blanc (ct:OK)'], [4, 'Ampoule Spectre blanc (ct:KO)'], [5, ' Ampoule RGBW']], triggerAction: 'all'"
+		},
+		{
+			"parameter": "DZFREQ",
+			"description": "Fréquence d'actualisation (min)",
+			"xtype": "numberfield",
+			"default_value": "5",
+			"field": "minValue:0, maxValue:1000 ,allowDecimals:false, width:60, allowBlank:false"
 		}
 	],
 	"scripts": [
@@ -52,12 +59,43 @@
 		}
 	],
 	"devices": [
+		{	"device_id": "deczprisecm",
+			"create": "plugin.parameters.DZMODEL==1",
+			"module_id": "51",
+			"type": "http",
+			"name_fr": "Com. Prise plugin.name plugin.parameters.DZIDDECONZ",
+			"icon": "heartbeat.png","icon2b":"IkeaPrise.png",
+			"utilisation_id": "35",
+			"parameters": {
+				"VAR1": "2B_deconz.php",
+				"VAR2": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
+				"RAW_XPATH": "//reachable",
+				"POLLING": "plugin.parameters.DZFREQ",
+				"CONVERT": "0"
+			},
+			"values": [{
+					"value": "0",
+					"description": "Injoignable",
+					"icon": "heartbeat_c2.png","icon2b":"IkeaPrise_KO.png"
+				},
+				{
+					"value": "1",
+					"description": "OK",
+					"icon": "heartbeat_c1.png","icon2b":"IkeaPrise_OK.png"
+				}
+			]
+		},
 		{   "device_id": "deczprise",
+		    "parent_id": "deczprisecm",
 			"create": "plugin.parameters.DZMODEL==1",
 			"module_id": "41",
 			"type": "http",
-			"name_fr": "plugin.name (plugin.parameters.DZIDDECONZ)",
-			"icon": "prise.png",
+			"name_fr": "Prise plugin.name",
+			"icon": "prise.png","icon2b":"IkeaPrise.png",
 			"utilisation_id": "2",
 			"parameters": {
 				"VAR1": "2B_deconz.php",
@@ -67,14 +105,14 @@
 				"ignore_errors": 3,
 				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
 				"RAW_XPATH": "//eedomus/e_on",
-				"POLLING": "5",
+				"POLLING": "plugin.parameters.DZFREQ",
 				"CONVERT": "0"
 			},
 			"values": [
 				{
 					"value": "0",
 					"description": "Off",
-					"icon": "prise_b2.png",
+					"icon": "prise_b2.png","icon2b":"IkeaPrise_Off.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": !ON! }&on=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -82,19 +120,51 @@
 				{
 					"value": "1",
 					"description": "On",
-					"icon": "prise_b1.png",
+					"icon": "prise_b1.png","icon2b":"IkeaPrise_On.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": !ON! }&on=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
 				}
 			]
+		},	
+		{   "device_id": "deczampstdcm",			
+			"create": "plugin.parameters.DZMODEL==2",
+			"module_id": "51",
+			"type": "http",
+			"name_fr": "Com. Ampoule plugin.name plugin.parameters.DZIDDECONZ",
+			"icon": "heartbeat.png","icon2b":"Light01_LW.png",
+			"utilisation_id": "35",
+			"parameters": {
+				"VAR1": "2B_deconz.php",
+				"VAR2": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
+				"RAW_XPATH": "//reachable",
+				"POLLING": "plugin.parameters.DZFREQ",
+				"CONVERT": "0"
+			},
+			"values": [{
+					"value": "0",
+					"description": "Injoignable",
+					"icon": "heartbeat_c2.png","icon2b":"Light01_KO.png"
+				},
+				{
+					"value": "1",
+					"description": "OK",
+					"icon": "heartbeat_c1.png","icon2b":"Light01_OK.png"
+				}
+			]
 		},
+		
 		{	"device_id": "deczampstd",
+			"parent_id": "deczampstdcm",
 			"create": "plugin.parameters.DZMODEL==2",
 			"module_id": "41",
 			"type": "http",
-			"name_fr": "Ampoule W (plugin.parameters.DZIDDECONZ)",
-			"icon": "lamp_on.png",
+			"name_fr": "Ampoule plugin.name",
+			"icon": "lamp_on.png","icon2b":"Light01_LW.png",
 			"utilisation_id": "1",
 			"parameters": {
 				"VAR1": "2B_deconz.php",
@@ -104,14 +174,14 @@
 				"ignore_errors": 3,
 				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
 				"RAW_XPATH": "//eedomus/e_onbri",
-				"POLLING": "5",
+				"POLLING": "plugin.parameters.DZFREQ",
 				"CONVERT": "0"
 			},
 			"values": [
 				{
 					"value": "-1",
 					"description": "On",
-					"icon": "lamp_on.png",
+					"icon": "lamp_on.png","icon2b":"Light01_On.png", 
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": !ON! }&on=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -119,7 +189,7 @@
 				{
 					"value": "0",
 					"description": "Off",
-					"icon": "lamp_off.png",
+					"icon": "lamp_off.png","icon2b":"Light01_Off.png", 
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": !ON! }&on=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -127,7 +197,7 @@
 				{
 					"value": "1",
 					"description": "Min",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_Min.png", 
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -135,7 +205,7 @@
 				{
 					"value": "10",
 					"description": "10%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_010.png", 
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -143,7 +213,7 @@
 				{
 					"value": "20",
 					"description": "20%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_020.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -151,7 +221,7 @@
 				{
 					"value": "30",
 					"description": "30%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_030.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -159,7 +229,7 @@
 				{
 					"value": "40",
 					"description": "40%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_040.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -167,7 +237,7 @@
 				{
 					"value": "50",
 					"description": "50%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_050.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -175,7 +245,7 @@
 				{
 					"value": "60",
 					"description": "60%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_060.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -183,7 +253,7 @@
 				{
 					"value": "70",
 					"description": "70%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_070.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -191,7 +261,7 @@
 				{
 					"value": "80",
 					"description": "80%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_080.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -199,7 +269,7 @@
 				{
 					"value": "90",
 					"description": "90%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_090.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -207,19 +277,50 @@
 				{
 					"value": "100",
 					"description": "Max",
-					"icon": "lamp_on.png",
+					"icon": "lamp_on.png","icon2b":"Light01_Max.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
 				}
 			]
 		},
-		{	"device_id": "deczamptemp",
+		{   "device_id": "deczamptacm",
+			"create": "plugin.parameters.DZMODEL==3",
+			"module_id": "51",
+			"type": "http",
+			"name_fr": "Com. Ampoule plugin.name WS1 plugin.parameters.DZIDDECONZ",
+			"icon": "heartbeat.png","icon2b":"Light01_LWC.png",
+			"utilisation_id": "35",
+			"parameters": {
+				"VAR1": "2B_deconz.php",
+				"VAR2": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
+				"RAW_XPATH": "//reachable",
+				"POLLING": "plugin.parameters.DZFREQ",
+				"CONVERT": "0"
+			},
+			"values": [{
+					"value": "0",
+					"description": "Injoignable",
+					"icon": "heartbeat_c2.png","icon2b":"Light01_KO.png"
+				},
+				{
+					"value": "1",
+					"description": "OK",
+					"icon": "heartbeat_c1.png","icon2b":"Light01_OK.png"
+				}
+			]
+		},
+		{	"device_id": "deczampta",
+			"parent_id": "deczamptacm",		
 			"create": "plugin.parameters.DZMODEL==3",
 			"module_id": "41",
 			"type": "http",
-			"name_fr": "Ampoule WS (plugin.parameters.DZIDDECONZ)",
-			"icon": "lamp_on.png",
+			"name_fr": "Ampoule plugin.name WS1",
+			"icon": "lamp_on.png","icon2b":"Light01_LWC.png",
 			"utilisation_id": "1",
 			"parameters": {
 				"VAR1": "2B_deconz.php",
@@ -229,14 +330,14 @@
 				"ignore_errors": 3,
 				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
 				"RAW_XPATH": "//eedomus/e_onbri",
-				"POLLING": "5",
+				"POLLING": "plugin.parameters.DZFREQ",
 				"CONVERT": "0"
 			},
 			"values": [
 				{
 					"value": "-1",
 					"description": "On",
-					"icon": "lamp_on.png",
+					"icon": "lamp_on.png","icon2b":"Light01_On.png", 
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": !ON! }&on=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -244,7 +345,7 @@
 				{
 					"value": "0",
 					"description": "Off",
-					"icon": "lamp_off.png",
+					"icon": "lamp_off.png","icon2b":"Light01_Off.png", 
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": !ON! }&on=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -252,7 +353,7 @@
 				{
 					"value": "1",
 					"description": "Min",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_Min.png", 
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -260,7 +361,7 @@
 				{
 					"value": "10",
 					"description": "10%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_010.png", 
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -268,7 +369,7 @@
 				{
 					"value": "20",
 					"description": "20%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_020.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -276,7 +377,7 @@
 				{
 					"value": "30",
 					"description": "30%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_030.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -284,7 +385,7 @@
 				{
 					"value": "40",
 					"description": "40%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_040.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -292,7 +393,7 @@
 				{
 					"value": "50",
 					"description": "50%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_050.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -300,7 +401,7 @@
 				{
 					"value": "60",
 					"description": "60%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_060.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -308,7 +409,7 @@
 				{
 					"value": "70",
 					"description": "70%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_070.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -316,7 +417,7 @@
 				{
 					"value": "80",
 					"description": "80%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_080.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -324,7 +425,7 @@
 				{
 					"value": "90",
 					"description": "90%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_090.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -332,21 +433,240 @@
 				{
 					"value": "100",
 					"description": "Max",
-					"icon": "lamp_on.png",
+					"icon": "lamp_on.png","icon2b":"Light01_Max.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
 				}
 			]
 		},
-		{	"device_id": "deczamptempt",
-			"parent_id": "deczamptemp",
+		{	"device_id": "deczamptat",
+			"parent_id": "deczamptacm",
 			"create": "plugin.parameters.DZMODEL==3",
 			"description": "RQ : la valeur ct est incorrecte dans deCONZ pour les ampoules IKEA WS, la bonne valeur est dans xy mais non accessible dans l'API ! ",
 			"module_id": "41",
 			"type": "http",
-			"name_fr": "Ampoule WS - Blanc (plugin.parameters.DZIDDECONZ)",
-			"icon": "lamp_warm.png",
+			"name_fr": "Ampoule plugin.name WS1 - Blancs",
+			"icon": "lamp_warm.png","icon2b":"Light01_LWC.png",
+			"utilisation_id": "82",
+			"parameters": {
+				"VAR1": "2B_deconz.php",
+				"VAR2": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
+				"RAW_XPATH": "//eedomus/e_ct",
+				"POLLING": "plugin.parameters.DZFREQ",
+				"CONVERT": "0"
+			},
+			"values": [
+				{
+					"value": "250",
+					"description": "Très froid",
+					"icon": "lamp_cold.png","icon2b":"Light01_TempW0.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": true, \"ct\": [RAW_VALUE]}",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "301",
+					"description": "Froid",
+					"icon": "lamp_02.png","icon2b":"Light01_TempW1.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": true, \"ct\": [RAW_VALUE]}",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "352",
+					"description": "Naturel",
+					"icon": "lamp_warm.png","icon2b":"Light01_TempW2.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": true, \"ct\": [RAW_VALUE]}",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "403",
+					"description": "Chaud",
+					"icon": "lamp_on.png","icon2b":"Light01_TempW3.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": true, \"ct\": [RAW_VALUE]}",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "454",
+					"description": "Très chaud",
+					"icon": "lamp_06.png","icon2b":"Light01_TempW4.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": true, \"ct\": [RAW_VALUE]}",					
+					"http_type": "GET",
+					"hidden": "0"
+				}
+			]
+		},
+		{   "device_id": "deczamptbcm",
+			"create": "plugin.parameters.DZMODEL==4",
+			"module_id": "51",
+			"type": "http",
+			"name_fr": "Com. Ampoule plugin.name WS2 plugin.parameters.DZIDDECONZ",
+			"icon": "heartbeat.png","icon2b":"Light01_LWC.png",
+			"utilisation_id": "35",
+			"parameters": {
+				"VAR1": "2B_deconz.php",
+				"VAR2": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
+				"RAW_XPATH": "//reachable",
+				"POLLING": "plugin.parameters.DZFREQ",
+				"CONVERT": "0"
+			},
+			"values": [{
+					"value": "0",
+					"description": "Injoignable",
+					"icon": "heartbeat_c2.png","icon2b":"Light01_KO.png"
+				},
+				{
+					"value": "1",
+					"description": "OK",
+					"icon": "heartbeat_c1.png","icon2b":"Light01_OK.png"
+				}
+			]
+		},		
+		{	"device_id": "deczamptb",
+			"parent_id": "deczamptbcm",		
+			"create": "plugin.parameters.DZMODEL==4",
+			"module_id": "41",
+			"type": "http",
+			"name_fr": "Ampoule plugin.name WS2",
+			"icon": "lamp_on.png","icon2b":"Light01_LWC.png",
+			"utilisation_id": "1",
+			"parameters": {
+				"VAR1": "2B_deconz.php",
+				"VAR2": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
+				"RAW_XPATH": "//eedomus/e_onbri",
+				"POLLING": "plugin.parameters.DZFREQ",
+				"CONVERT": "0"
+			},
+			"values": [
+				{
+					"value": "-1",
+					"description": "On",
+					"icon": "lamp_on.png","icon2b":"Light01_On.png", 
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": !ON! }&on=[RAW_VALUE]",
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "0",
+					"description": "Off",
+					"icon": "lamp_off.png","icon2b":"Light01_Off.png", 
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": !ON! }&on=[RAW_VALUE]",
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "1",
+					"description": "Min",
+					"icon": "lamp_mid.png","icon2b":"Light01_Min.png", 
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "10",
+					"description": "10%",
+					"icon": "lamp_mid.png","icon2b":"Light01_010.png", 
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "20",
+					"description": "20%",
+					"icon": "lamp_mid.png","icon2b":"Light01_020.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "30",
+					"description": "30%",
+					"icon": "lamp_mid.png","icon2b":"Light01_030.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "40",
+					"description": "40%",
+					"icon": "lamp_mid.png","icon2b":"Light01_040.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "50",
+					"description": "50%",
+					"icon": "lamp_mid.png","icon2b":"Light01_050.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "60",
+					"description": "60%",
+					"icon": "lamp_mid.png","icon2b":"Light01_060.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "70",
+					"description": "70%",
+					"icon": "lamp_mid.png","icon2b":"Light01_070.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "80",
+					"description": "80%",
+					"icon": "lamp_mid.png","icon2b":"Light01_080.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "90",
+					"description": "90%",
+					"icon": "lamp_mid.png","icon2b":"Light01_090.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "100",
+					"description": "Max",
+					"icon": "lamp_on.png","icon2b":"Light01_Max.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				}
+			]
+		},
+		{	"device_id": "deczamptbt",
+			"parent_id": "deczamptbcm",
+			"create": "plugin.parameters.DZMODEL==4",
+			"description": "RQ : la valeur ct est incorrecte dans deCONZ pour les ampoules IKEA WS, la bonne valeur est dans xy mais non accessible dans l'API ! ",
+			"module_id": "41",
+			"type": "http",
+			"name_fr": "Ampoule plugin.name WS2 - Blancs",
+			"icon": "lamp_warm.png","icon2b":"Light01_LWC.png",
 			"utilisation_id": "82",
 			"parameters": {
 				"VAR1": "2B_deconz.php",
@@ -356,14 +676,14 @@
 				"ignore_errors": 3,
 				"RAW_URL-BUG": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
 				"RAW_XPATH-BUG": "//eedomus/e_ct",
-				"POLLING": "5",
+				"POLLING": "plugin.parameters.DZFREQ",
 				"CONVERT": "0"
 			},
 			"values": [
 				{
 					"value": "250",
 					"description": "Très froid",
-					"icon": "lamp_cold.png",
+					"icon": "lamp_cold.png","icon2b":"Light01_TempW0.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": true, \"ct\": [RAW_VALUE]}",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -371,7 +691,7 @@
 				{
 					"value": "301",
 					"description": "Froid",
-					"icon": "lamp_02.png",
+					"icon": "lamp_02.png","icon2b":"Light01_TempW1.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": true, \"ct\": [RAW_VALUE]}",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -379,7 +699,7 @@
 				{
 					"value": "352",
 					"description": "Naturel",
-					"icon": "lamp_warm.png",
+					"icon": "lamp_warm.png","icon2b":"Light01_TempW2.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": true, \"ct\": [RAW_VALUE]}",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -387,7 +707,7 @@
 				{
 					"value": "403",
 					"description": "Chaud",
-					"icon": "lamp_on.png",
+					"icon": "lamp_on.png","icon2b":"Light01_TempW3.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": true, \"ct\": [RAW_VALUE]}",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -395,19 +715,50 @@
 				{
 					"value": "454",
 					"description": "Très chaud",
-					"icon": "lamp_06.png",
+					"icon": "lamp_06.png","icon2b":"Light01_TempW4.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": true, \"ct\": [RAW_VALUE]}",					
 					"http_type": "GET",
 					"hidden": "0"
 				}
 			]
 		},
+		{   "device_id": "deczamprgbcm",
+			"create": "plugin.parameters.DZMODEL==5",
+			"module_id": "51",
+			"type": "http",
+			"name_fr": "Com. Ampoule plugin.name RGB plugin.parameters.DZIDDECONZ",
+			"icon": "heartbeat.png","icon2b":"Light01_LRGB.png",
+			"utilisation_id": "35",
+			"parameters": {
+				"VAR1": "2B_deconz.php",
+				"VAR2": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
+				"RAW_XPATH": "//reachable",
+				"POLLING": "plugin.parameters.DZFREQ",
+				"CONVERT": "0"
+			},
+			"values": [{
+					"value": "0",
+					"description": "Injoignable",
+					"icon": "heartbeat_c2.png","icon2b":"Light01_KO.png"
+				},
+				{
+					"value": "1",
+					"description": "OK",
+					"icon": "heartbeat_c1.png","icon2b":"Light01_OK.png"
+				}
+			]
+		},		
 		{	"device_id": "deczamprgb",
-			"create": "plugin.parameters.DZMODEL==4",
+			"parent_id": "deczamprgbcm",		
+			"create": "plugin.parameters.DZMODEL==5",
 			"module_id": "41",
 			"type": "http",
-			"name_fr": "Ampoule RGB (plugin.parameters.DZIDDECONZ)",
-			"icon": "lamp_on.png",
+			"name_fr": "Ampoule plugin.name RGB",
+			"icon": "lamp_on.png","icon2b":"Light01_LRGB.png",
 			"utilisation_id": "1",
 			"parameters": {
 				"VAR1": "2B_deconz.php",
@@ -417,14 +768,14 @@
 				"ignore_errors": 3,
 				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
 				"RAW_XPATH": "//eedomus/e_onbri",
-				"POLLING": "5",
+				"POLLING": "plugin.parameters.DZFREQ",
 				"CONVERT": "0"
 			},
 			"values": [
 				{
 					"value": "-1",
 					"description": "On",
-					"icon": "lamp_on.png",
+					"icon": "lamp_on.png","icon2b":"Light01_On.png", 
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": !ON! }&on=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -432,7 +783,7 @@
 				{
 					"value": "0",
 					"description": "Off",
-					"icon": "lamp_off.png",
+					"icon": "lamp_off.png","icon2b":"Light01_Off.png", 
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\": !ON! }&on=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -440,7 +791,7 @@
 				{
 					"value": "1",
 					"description": "Min",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_Min.png", 
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -448,7 +799,7 @@
 				{
 					"value": "10",
 					"description": "10%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_010.png", 
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -456,7 +807,7 @@
 				{
 					"value": "20",
 					"description": "20%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_020.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -464,7 +815,7 @@
 				{
 					"value": "30",
 					"description": "30%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_030.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -472,7 +823,7 @@
 				{
 					"value": "40",
 					"description": "40%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_040.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -480,7 +831,7 @@
 				{
 					"value": "50",
 					"description": "50%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_050.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -488,7 +839,7 @@
 				{
 					"value": "60",
 					"description": "60%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_060.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -496,7 +847,7 @@
 				{
 					"value": "70",
 					"description": "70%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_070.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -504,7 +855,7 @@
 				{
 					"value": "80",
 					"description": "80%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_080.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -512,7 +863,7 @@
 				{
 					"value": "90",
 					"description": "90%",
-					"icon": "lamp_mid.png",
+					"icon": "lamp_mid.png","icon2b":"Light01_090.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
@@ -520,20 +871,20 @@
 				{
 					"value": "100",
 					"description": "Max",
-					"icon": "lamp_on.png",
+					"icon": "lamp_on.png","icon2b":"Light01_Max.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"bri\":!BRI!}&bri=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
 				}
 			]
 		},
-		{	"device_id": "deczamprgbc",
-		    "parent_id": "deczamprgb",
-			"create": "plugin.parameters.DZMODEL==4",
+		{	"device_id": "deczampcol",
+			"parent_id": "deczamprgbcm",
+			"create": "plugin.parameters.DZMODEL==5",
 			"module_id": "41",
 			"type": "http",
-			"name_fr": "Ampoule RGB - Couleur (plugin.parameters.DZIDDECONZ)",
-			"icon": "lamp_43.png",
+			"name_fr": "Ampoule plugin.name RGB - Couleurs",
+			"icon": "lamp_43.png","icon2b":"Light01_LRGB.png",
 			"utilisation_id": "82",
 			"parameters": {
 				"VAR1": "2B_deconz.php",
@@ -543,14 +894,14 @@
 				"ignore_errors": 3,
 				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
 				"RAW_XPATH": "//eedomus/e_colorRGB10",
-				"POLLING": "5",
+				"POLLING": "plugin.parameters.DZFREQ",
 				"CONVERT": "0"
 			},
 			"values": [
 				{
 					"value": "0,0,100",
 					"description": "Bleu",
-					"icon": "lamp_05.png",
+					"icon": "lamp_05.png","icon2b":"Light01_BLEU.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -558,7 +909,7 @@
 				{
 					"value": "0,100,0",
 					"description": "Vert",
-					"icon": "lamp_04.png",
+					"icon": "lamp_04.png","icon2b":"Light01_VERT.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -566,7 +917,7 @@
 				{
 					"value": "0,100,30",
 					"description": "Pomme",
-					"icon": "lamp_43.png",
+					"icon": "lamp_43.png","icon2b":"Light01_POMME.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -574,7 +925,7 @@
 				{
 					"value": "0,50,100",
 					"description": "Cyan",
-					"icon": "lamp_08.png",
+					"icon": "lamp_08.png","icon2b":"Light01_CYAN.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -583,7 +934,7 @@
 				{
 					"value": "40,0,100",
 					"description": "Violet",
-					"icon": "lamp_07.png",
+					"icon": "lamp_07.png","icon2b":"Light01_VIOLET.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -592,7 +943,7 @@
 				{
 					"value": "100,0,0",
 					"description": "Rouge",
-					"icon": "lamp_03.png",
+					"icon": "lamp_03.png","icon2b":"Light01_ROUGE.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -600,7 +951,7 @@
 				{
 					"value": "100,0,100",
 					"description": "Rose",
-					"icon": "lamp_38.png",
+					"icon": "lamp_38.png","icon2b":"Light01_ROSE.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -609,7 +960,7 @@
 				{
 					"value": "100,100,0",
 					"description": "Jaune",
-					"icon": "lamp_06.png",
+					"icon": "lamp_06.png","icon2b":"Light01_JAUNE.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -617,7 +968,7 @@
 				{
 					"value": "100,50,0",
 					"description": "Orange",
-					"icon": "lamp_46.png",
+					"icon": "lamp_46.png","icon2b":"Light01_ORANGE.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -625,7 +976,7 @@
 				{
 					"value": "100,70,30",
 					"description": "Blanc très chaud",
-					"icon": "lamp_06.png",
+					"icon": "lamp_06.png","icon2b":"Light01_TempW4.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -633,7 +984,7 @@
 				{
 					"value": "100,80,40",
 					"description": "Blanc chaud",
-					"icon": "lamp_on.png",
+					"icon": "lamp_on.png","icon2b":"Light01_TempW3.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -641,7 +992,7 @@
 				{
 					"value": "100,80,50",
 					"description": "Blanc naturel",
-					"icon": "lamp_warm.png",
+					"icon": "lamp_warm.png","icon2b":"Light01_TempW2.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -649,7 +1000,7 @@
 				{
 					"value": "100,90,60",
 					"description": "Blanc froid",
-					"icon": "lamp_02.png",
+					"icon": "lamp_02.png","icon2b":"Light01_TempW1.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -657,7 +1008,7 @@
 				{
 					"value": "100,90,70",
 					"description": "Blanc très froid",
-					"icon": "lamp_cold.png",
+					"icon": "lamp_cold.png","icon2b":"Light01_TempW0.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
@@ -665,8 +1016,338 @@
 				{
 					"value": "100,100,100",
 					"description": "Blanc",
-					"icon": "lamp_02.png",
+					"icon": "lamp_02.png","icon2b":"Light01_BLANC.png",
 					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[RAW_VALUE]",
+					"http_type": "GET",
+					"hidden": "0"
+				}
+			]
+		},
+		{	"device_id": "deczampred",
+			"parent_id": "deczamprgbcm",
+			"create": "plugin.parameters.DZMODEL==5",
+			"module_id": "41",
+			"type": "http",
+			"name_fr": "Ampoule plugin.name RGB - Rouge",
+			"icon": "lamp_03.png","icon2b":"Light01_LRGB.png",
+			"utilisation_id": "1",
+			"parameters": {
+				"VAR1": "2B_deconz.php",
+				"VAR2": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
+				"RAW_XPATH": "//eedomus/e_colorR10",
+				"POLLING": "plugin.parameters.DZFREQ",
+				"CONVERT": "0"
+			},
+			"values": [
+				{				
+					"value": "0",
+					"description": "0%",
+					"icon": "lamp_03.png","icon2b":"Light01_R000.png", 
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newr=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "10",
+					"description": "10%",
+					"icon": "lamp_03.png","icon2b":"Light01_R010.png", 
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newr=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "20",
+					"description": "20%",
+					"icon": "lamp_03.png","icon2b":"Light01_R020.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newr=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "30",
+					"description": "30%",
+					"icon": "lamp_03.png","icon2b":"Light01_R030.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newr=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "40",
+					"description": "40%",
+					"icon": "lamp_03.png","icon2b":"Light01_R040.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newr=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "50",
+					"description": "50%",
+					"icon": "lamp_03.png","icon2b":"Light01_R050.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newr=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "60",
+					"description": "60%",
+					"icon": "lamp_03.png","icon2b":"Light01_R060.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newr=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "70",
+					"description": "70%",
+					"icon": "lamp_03.png","icon2b":"Light01_R070.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newr=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "80",
+					"description": "80%",
+					"icon": "lamp_03.png","icon2b":"Light01_R080.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newr=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "90",
+					"description": "90%",
+					"icon": "lamp_03.png","icon2b":"Light01_R090.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newr=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "100",
+					"description": "100%",
+					"icon": "lamp_03.png","icon2b":"Light01_R100.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newr=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				}
+			]
+		},
+		{	"device_id": "deczampgreen",
+			"parent_id": "deczamprgbcm",
+			"create": "plugin.parameters.DZMODEL==5",
+			"module_id": "41",
+			"type": "http",
+			"name_fr": "Ampoule plugin.name RGB - Vert",
+			"icon": "lamp_04.png","icon2b":"Light01_LRGB.png",
+			"utilisation_id": "1",
+			"parameters": {
+				"VAR1": "2B_deconz.php",
+				"VAR2": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
+				"RAW_XPATH": "//eedomus/e_colorG10",
+				"POLLING": "plugin.parameters.DZFREQ",
+				"CONVERT": "0"
+			},
+			"values": [
+				{				
+					"value": "0",
+					"description": "0%",
+					"icon": "lamp_04.png","icon2b":"Light01_V000.png", 
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newg=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "10",
+					"description": "10%",
+					"icon": "lamp_04.png","icon2b":"Light01_V010.png", 
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newg=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "20",
+					"description": "20%",
+					"icon": "lamp_04.png","icon2b":"Light01_V020.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newg=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "30",
+					"description": "30%",
+					"icon": "lamp_04.png","icon2b":"Light01_V030.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newg=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "40",
+					"description": "40%",
+					"icon": "lamp_04.png","icon2b":"Light01_V040.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newg=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "50",
+					"description": "50%",
+					"icon": "lamp_04.png","icon2b":"Light01_V050.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newg=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "60",
+					"description": "60%",
+					"icon": "lamp_04.png","icon2b":"Light01_V060.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newg=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "70",
+					"description": "70%",
+					"icon": "lamp_04.png","icon2b":"Light01_V070.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newg=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "80",
+					"description": "80%",
+					"icon": "lamp_04.png","icon2b":"Light01_V080.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newg=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "90",
+					"description": "90%",
+					"icon": "lamp_04.png","icon2b":"Light01_V090.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newg=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "100",
+					"description": "100%",
+					"icon": "lamp_04.png","icon2b":"Light01_V100.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newg=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				}
+			]
+		},
+		{	"device_id": "deczampblue",
+			"parent_id": "deczamprgbcm",
+			"create": "plugin.parameters.DZMODEL==5",
+			"module_id": "41",
+			"type": "http",
+			"name_fr": "Ampoule plugin.name RGB - Bleu",
+			"icon": "lamp_05.png","icon2b":"Light01_LRGB.png",
+			"utilisation_id": "1",
+			"parameters": {
+				"VAR1": "2B_deconz.php",
+				"VAR2": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=GET",
+				"RAW_XPATH": "//eedomus/e_colorB10",
+				"POLLING": "plugin.parameters.DZFREQ",
+				"CONVERT": "0"
+			},
+			"values": [
+				{				
+					"value": "0",
+					"description": "0%",
+					"icon": "lamp_05.png","icon2b":"Light01_B000.png", 
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newb=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "10",
+					"description": "10%",
+					"icon": "lamp_05.png","icon2b":"Light01_B010.png", 
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newb=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "20",
+					"description": "20%",
+					"icon": "lamp_05.png","icon2b":"Light01_B020.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newb=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "30",
+					"description": "30%",
+					"icon": "lamp_05.png","icon2b":"Light01_B030.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newb=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "40",
+					"description": "40%",
+					"icon": "lamp_05.png","icon2b":"Light01_B040.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newb=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "50",
+					"description": "50%",
+					"icon": "lamp_05.png","icon2b":"Light01_B050.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newb=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "60",
+					"description": "60%",
+					"icon": "lamp_05.png","icon2b":"Light01_B060.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newb=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "70",
+					"description": "70%",
+					"icon": "lamp_05.png","icon2b":"Light01_B070.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newb=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "80",
+					"description": "80%",
+					"icon": "lamp_05.png","icon2b":"Light01_B080.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newb=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "90",
+					"description": "90%",
+					"icon": "lamp_05.png","icon2b":"Light01_B090.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newb=[RAW_VALUE]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "100",
+					"description": "100%",
+					"icon": "lamp_05.png","icon2b":"Light01_B100.png",
+					"http_url": "http://localhost/script/?exec=[VAR1]&vars=[VAR2]&action=PUT&json={\"on\":true, \"xy\":[!XY!], \"colormode\":\"xy\"}&rgb=[LAST_VALUE PERIPH_ID=plugin.devices.deczampcol]&newb=[RAW_VALUE]",					
 					"http_type": "GET",
 					"hidden": "0"
 				}
