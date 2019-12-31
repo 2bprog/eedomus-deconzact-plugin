@@ -253,7 +253,7 @@
 					"value": "-1",
 					"description": "On",
 					"icon": "lamp_on.png","icon2b":"Light01_On.png", 
-					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\": !ON!, \"transitiontime\":!TR!}&on=[RAW_VALUE]&transapi=[VAR2]",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\": !ON!}&on=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
 				},
@@ -261,7 +261,7 @@
 					"value": "0",
 					"description": "Off",
 					"icon": "lamp_off.png","icon2b":"Light01_Off.png", 
-					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\": !ON!, \"transitiontime\":!TR!}&on=[RAW_VALUE]&transapi=[VAR2]",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\": !ON!}&on=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
 				},
@@ -477,7 +477,7 @@
 					"value": "-1",
 					"description": "On",
 					"icon": "lamp_on.png","icon2b":"Light01_On.png", 
-					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\": !ON!, \"transitiontime\":!TR!}&on=[RAW_VALUE]&transapi=[VAR2]",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\": !ON!}&on=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
 				},
@@ -485,7 +485,7 @@
 					"value": "0",
 					"description": "Off",
 					"icon": "lamp_off.png","icon2b":"Light01_Off.png", 
-					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\": !ON!, \"transitiontime\":!TR!}&on=[RAW_VALUE]&transapi=[VAR2]",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\": !ON!}&on=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
 				},
@@ -762,7 +762,7 @@
 					"value": "-1",
 					"description": "On",
 					"icon": "lamp_on.png","icon2b":"Light01_On.png", 
-					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\": !ON!, \"transitiontime\":!TR!}&on=[RAW_VALUE]&transapi=[VAR2]",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\": !ON!}&on=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
 				},
@@ -770,7 +770,7 @@
 					"value": "0",
 					"description": "Off",
 					"icon": "lamp_off.png","icon2b":"Light01_Off.png", 					
-					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\": !ON!, \"transitiontime\":!TR!}&on=[RAW_VALUE]&transapi=[VAR2]",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\": !ON!}&on=[RAW_VALUE]",
 					"http_type": "GET",
 					"hidden": "0"
 				},
