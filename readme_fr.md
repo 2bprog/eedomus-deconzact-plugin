@@ -1,31 +1,31 @@
-Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs configur√©s dans deCONZ.
+Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs configurÈs dans deCONZ.
 
-## Pr√©requis
+## PrÈrequis
 
-Un serveur deCONZ install√©
+Un serveur deCONZ installÈ
 
 ## Installation
 
-Cliquez sur "Configuration" / "Ajouter ou supprimer un p√©riph√©rique" / "Store eedomus" / "Actionneurs - deConz" / "Cr√©er"
+Cliquez sur "Configuration" / "Ajouter ou supprimer un pÈriphÈrique" / "Store eedomus" / "Actionneurs - deConz" / "CrÈer"
 
 ## Champs a configurer : 
 
 ![configuration actionneur deCONZ](https://i.ibb.co/pyLkDfS/readme01.png)
 
 * IP + Port : Adresse ip et port (facultaf si votre serveur utiliser le port 80) de votre serveur
-* Clef API : l'Identification l'acces a l'API deCONZ (pour cr√©er une nouvelle clef d'acces : Connectez vous a **Phoscon-GW** puis allez dans **Settings/Gateway/Advanced**  puis, cliquez sur **Athenticate app** )
+* Clef API : l'Identification l'acces a l'API deCONZ (pour crÈer une nouvelle clef d'acces : Connectez vous a **Phoscon-GW** puis allez dans **Settings/Gateway/Advanced**  puis, cliquez sur **Athenticate app** )
 * Identifiant de l'actionneur : TODO
-* Mod√®les d'actionneurs :  Prise, Ampoule standard, Ampoule spectre blanc<sup>1</sup>, Ampoule couleur
+* ModËles d'actionneurs :  Prise, Ampoule standard, Ampoule spectre blanc<sup>1</sup>, Ampoule couleur
 
-## P√©riph√©riques cr√©es en fonction de votre s√©lection : 
+## PÈriphÈriques crÈes en fonction de votre sÈlection : 
 
 |[1] pour une prise    |   [2] pour toutes les ampoules  | [3] Pour les ampoules avec un spectre blanc |[4] Pour les ampoules couleur|
 | :-----: | :-----: | :-----: | :-----: |
-| ![p√©riph√©rique on off](https://i.ibb.co/gSvngm7/readme02.png) |  ![p√©riph√©rique on, off et luminosit√©](https://i.ibb.co/Kmgcct5/readme04.png) | ![p√©riph√©rique Gestion des blancs](https://i.ibb.co/4pr29mn/readme05.png) | ![p√©riph√©rique Gestion des couleurs](https://i.ibb.co/nRtTWmf/readme03.png) |
+| ![pÈriphÈrique on off](https://i.ibb.co/gSvngm7/readme02.png) |  ![pÈriphÈrique on, off et luminositÈ](https://i.ibb.co/Kmgcct5/readme04.png) | ![pÈriphÈrique Gestion des blancs](https://i.ibb.co/4pr29mn/readme05.png) | ![pÈriphÈrique Gestion des couleurs](https://i.ibb.co/nRtTWmf/readme03.png) |
 
-## Voici la liste de p√©riph√©riques que j'ai test√© avec ce pluging
+## Voici la liste de pÈriphÈriques que j'ai testÈ avec ce pluging
 
-* Ikea - Tradfri Prise connect√©e [1]
+* Ikea - Tradfri Prise connectÈe [1]
 * Ikea - Tradfri Alimentation 10W [2]
 * Ikea - Tradfri Alimentation 30W [2] 
 * Ikea - Tradfri Ampoule E14 W op/ch 400lm [2]
@@ -36,7 +36,7 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un p√©riph√©rique" / "Store 
 * Ikea - Tradfri Ampoule E27 CWS opal 600lm [4]
 
 ## Remarques 
-La mise en place d'un push vers l'eedomus via un autre syst√®me (ex Domoticz, Node-RED...) connect√© au webservice de deCONZ permet d'obtenir les changements d'etat en temps r√©√®l.
+La mise en place d'un push vers l'eedomus via un autre systËme (ex Domoticz, Node-RED...) connectÈ au webservice de deCONZ permet d'obtenir les changements d'etat en temps rÈËl.
 
 ---
-<sup>1</sup> Pour les ampoules Ikea la valeur ct remont√©e par deCONZ est incorrecte (toujours a 439), il faut donc d√©sactiver le pooling sous eedomus.
+<sup>1</sup> Pour les ampoules Ikea la valeur ct remontÈe par deCONZ est incorrecte (toujours a 439), il faut donc dÈsactiver le pooling sous eedomus.
