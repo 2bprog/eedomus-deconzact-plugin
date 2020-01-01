@@ -12,8 +12,6 @@ Remove-Item ".\tmp\img\*.*"
 $zip = ".\release\deconzact.zip"  
 if (Test-Path $zip) {  Remove-Item $zip }
 
-# Get-Content -Path "C:\Temp\SourceFile.txt" | Out-File -FilePath "C:\Converted\DestFile.txt" -Encoding ascii
-# New-Item -Path "c:\" -Name "logfiles" -ItemType "directory"
 
 # Copy-Item -Path "..\img\deconzact.*" -Destination ".\tmp\img\" -Force
 
@@ -22,14 +20,10 @@ Copy-Item -Path "..\php\*.php" -Destination ".\tmp" -Force
 Copy-Item "..\eedomus_plugin.json" -Destination ".\tmp" -Force
 Copy-Item "..\readme_fr.md" -Destination ".\tmp" -Force
 
-# converion UTF8 vers ansi
-Get-Content -Path "..\eedomus_plugin.json" | Out-File -FilePath ".\tmp\eedomus_plugin.json" -Encoding ASCII
-Get-Content -Path "..\readme_fr.md" | Out-File -FilePath ".\tmp\readme_fr.md" -Encoding ASCII
-
 # Template : (Get-Content $json) | Foreach-Object {$_ -replace 'XX', 'YY'} | Set-Content $file.$json
 $json = ".\tmp\eedomus_plugin.json"
 # (Get-Content $json) | Foreach-Object {$_ -replace '"plugin_id": "bbdeconzact"'    , '"plugin_id": "bbdeconzacti"'} | Set-Content $json
-(Get-Content $json) | Foreach-Object {$_ -replace '"name_fr": "Actionneurs - deConz"', '"name_fr": "Actionneurs - deConz [Internal]"'} | Set-Content $json
+# (Get-Content $json) | Foreach-Object {$_ -replace '"name_fr": "Actionneurs - deConz"', '"name_fr": "Actionneurs - deConz [Internal]"'} | Set-Content $json
 ,
 (Get-Content $json) | Foreach-Object {$_ -replace '"prise.png","icon2b":'     , ''} | Set-Content $json
 (Get-Content $json) | Foreach-Object {$_ -replace '"prise_b2.png","icon2b":'  , ''} | Set-Content $json
