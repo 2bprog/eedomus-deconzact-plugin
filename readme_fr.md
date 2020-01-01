@@ -19,7 +19,6 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 
 ## Périphériques crées en fonction de votre sélection : 
 <table>
-<tbody>
 <tr>
 <td>[1] pour une prise</td>
 <td>[2] pour toutes les ampoules</td> 
@@ -31,7 +30,6 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 <td>![périphérique Gestion des blancs](https://i.ibb.co/4pr29mn/readme05.png)</td>
 <td>![périphérique Gestion des couleurs](https://i.ibb.co/nRtTWmf/readme03.png)</td>
 </tr>
-</tbody>
 </table>
 
 
