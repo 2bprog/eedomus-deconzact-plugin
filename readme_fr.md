@@ -30,7 +30,7 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 [4] Pour les ampoules couleur<br>
 ![périphérique Gestion des couleurs](https://i.ibb.co/nRtTWmf/readme03.png)
 
-## Voici la liste de périphériques que j'ai testé avec ce pluging
+## Périphériques testés
 
 * Ikea - Tradfri Prise connectée [1]
 * Ikea - Tradfri Alimentation 10W [2]
