@@ -18,17 +18,21 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 * Modèles d'actionneurs :  Prise, Ampoule standard, Ampoule spectre blanc<sup>1</sup>, Ampoule couleur
 
 ## Périphériques crées en fonction de votre sélection : 
-<table>
-<tr>
-<td>[1] pour une prise</td>
-<td>[2] pour toutes les ampoules</td> 
-<td>[3] Pour les ampoules à spectre blanc</td> 
-<td>[4] Pour les ampoules couleur</td>
-</tr><tr>
-<td>![périphérique on off](https://i.ibb.co/gSvngm7/readme02.png)</td>
-<td>![périphérique on, off et luminosité](https://i.ibb.co/Kmgcct5/readme04.png)</td>
-<td>![périphérique Gestion des blancs](https://i.ibb.co/4pr29mn/readme05.png)</td>
-<td>![périphérique Gestion des couleurs](https://i.ibb.co/nRtTWmf/readme03.png)</td>
+[1] pour une prise
+![on, off](https://i.ibb.co/gSvngm7/readme02.png)</td>
+
+[2] pour les ampoules
+![ on, off et luminosité](https://i.ibb.co/Kmgcct5/readme04.png)
+
+[3] Pour les ampoules à spectre blanc
+![périphérique Gestion des blancs](https://i.ibb.co/4pr29mn/readme05.png)
+
+[4] Pour les ampoules couleur
+![périphérique Gestion des couleurs](https://i.ibb.co/nRtTWmf/readme03.png)
+
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </table>
 
