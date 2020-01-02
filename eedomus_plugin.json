@@ -13,10 +13,9 @@
 	"description_de": "",
 	"forum_link": "",
 	"parameters": [
-		
-		{
+		{		
 			"parameter": "DZIP",
-			"description": "IP + Port du serveur deCONZ ",
+			"description": "IP + Port du serveur deCONZ <a href=\\'javascript:eval(atob('d2luZG93Lm9wZW4oJy9zY3JpcHRfcHJveHkvP2V4ZWM9MkJfZGVjb256bGlzdC5waHAmY21kPWRpc2NvdmVyJnAyPWh0bWwmY29udHJvbGxlcl9pZD0nICsgRXh0LmdldENtcCgnYXR0YWNoZWRfY29udHJvbGxlcl9pZCcpLmdldFZhbHVlKCksJ2RlY29ueicsJ3dpZHRoPTYwMCxoZWlnaHQ9NjAwLHRvb2xiYXI9bm8sc2Nyb2xsYmFycz1ubyxyZXNpemFibGU9bm8nKTs'));\\'><img src=\\'/img/Search.png\\' width=\\'16\\' align=\\'absmiddle\\'> ",
 			"xtype": "textfield",
 			"default_value": "10.66.254.101:8090",
 			"field": "width:130, allowBlank:false, maskRe:/[0-9.:]/, regex:/^(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])\\:([0-9]{2}[0-9]?[0-9]?)$/, regexText:'Adresse IP invalide [0-255].[0-255].[0-255]:[0-255]'"
