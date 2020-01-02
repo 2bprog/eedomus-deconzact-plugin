@@ -18,24 +18,17 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 * Modèles d'actionneurs :  Prise, Ampoule standard, Ampoule spectre blanc<sup>1</sup>, Ampoule couleur
 
 ## Périphériques crées en fonction de votre sélection : 
-[1] pour une prise
+[1] pour une prise<br>
 ![on, off](https://i.ibb.co/gSvngm7/readme02.png)</td>
 
-[2] pour les ampoules
+[2] pour les ampoules<br>
 ![ on, off et luminosité](https://i.ibb.co/Kmgcct5/readme04.png)
 
-[3] Pour les ampoules à spectre blanc
+[3] Pour les ampoules à spectre blanc<br>
 ![périphérique Gestion des blancs](https://i.ibb.co/4pr29mn/readme05.png)
 
-[4] Pour les ampoules couleur
+[4] Pour les ampoules couleur<br>
 ![périphérique Gestion des couleurs](https://i.ibb.co/nRtTWmf/readme03.png)
-
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</table>
-
 
 ## Voici la liste de périphériques que j'ai testé avec ce pluging
 
