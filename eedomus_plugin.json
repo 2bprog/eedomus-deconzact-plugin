@@ -13,6 +13,12 @@
 	"description_de": "",
 	"forum_link": "",
 	"parameters": [
+	    {
+			"parameter": "DZCONFIG",
+			"description": "<b>Configuration :</b>",
+            "xtype": "displayfield",
+			"field": "style: 'padding: 3px; visibility:hidden;', value: ''"
+		},		
 		{		
 			"parameter": "DZIPLIST",
 			"description": "IP + Port du serveur deCONZ",			
@@ -52,11 +58,11 @@
 			"default_value": "",
 			"field": "style: 'padding: 3px;', minValue:1, allowDecimals:false, width:60, allowBlank:false"
 		},		
-		{		
-			"parameter": "DZSEP01",
-			"description": " ",			
-            "xtype": "displayfield",
-            "field": "style: 'padding: 3px;', value: ' '"			
+		{
+			"parameter": "DZTYPEOPTS",
+			"description": "<b>Type et options</b>",
+			"xtype": "checkbox",
+			"field": "style: 'margin-top: 6px; visibility:hidden;', checked: true"
 		},
 		{
 			"parameter": "DZMODEL",
