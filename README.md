@@ -25,5 +25,5 @@ Plugin eedomus pour piloter les actionneurs deCONZ
 La mise en place d'un push vers l'eedomus via un autre système (ex Domoticz, Node-RED...) connecté au webservice de deCONZ permet d'obtenir les changements d'etat en temps réèl.
 
 ---
-<sup>1</sup> Pour les ampoules Ikea la valeur ct remontée par deCONZ est incorrecte (toujours a 439), il faut donc désactiver le pooling sous eedomus.
+<sup>1</sup> Pour les ampoules Ikea la valeur ct remontée par deCONZ est incorrecte, il faut donc désactiver le pooling sous eedomus.
 
