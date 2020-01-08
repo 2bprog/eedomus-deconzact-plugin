@@ -10,7 +10,7 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 
 ## Champs a configurer : 
 
-![configuration actionneur deCONZ](https://i.ibb.co/pyLkDfS/readme01.png)
+![Configuration actionneur deCONZ](https://i.ibb.co/pyLkDfS/readme01.png)
 
 * IP + Port : Adresse ip et port (facultaf si votre serveur utiliser le port 80) de votre serveur
 * Clef API : l'Identification l'acces a l'API deCONZ (pour créer une nouvelle clef d'acces : Connectez vous a **Phoscon-GW** puis allez dans **Settings/Gateway/Advanced**  puis, cliquez sur **Athenticate app** )
@@ -19,7 +19,7 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 
 ## Périphériques crées en fonction de votre sélection : 
 [1] pour une prise<br>
-![on, off](https://i.ibb.co/gSvngm7/readme02.png)</td>
+![on, off](https://i.ibb.co/gSvngm7/readme02.png)
 
 [2] pour les ampoules<br>
 ![ on, off et luminosité](https://i.ibb.co/Kmgcct5/readme04.png)
