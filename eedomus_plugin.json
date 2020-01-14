@@ -2,7 +2,7 @@
 	"plugin_id": "bbdeconzact",
 	"name_fr": "Actionneurs - deConz",
 	"icon": "deconzact.png",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"creation_date": "2019-11-21",
 	"modification_date": "2020-01-14",
 	"author": "Benjamin B.<br><a target='_blank' href='https://github.com/2bprog/eedomus-deconzact-plugin'>Sources sur github <img src='/img/external.png'></a>",
