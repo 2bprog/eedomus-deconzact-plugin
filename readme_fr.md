@@ -27,10 +27,12 @@ Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs confi
 si tout ce passe bien une fenêtre vous affichera votre nouvelle Clef API, sinon un messgae d'erreur sera affiché.
 
 **Clef OK :** 
+
 ![Clef OK](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-ok.png)
 
 
 **Erreur :**
+
 ![Clef Erreur](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-erreur.png)
 
 
