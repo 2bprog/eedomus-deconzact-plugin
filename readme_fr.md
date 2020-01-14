@@ -34,13 +34,13 @@ Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs confi
 ![on, off](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/prise.png)
 
 ### [2] Une ampoule standard
-![ on, off et luminosité](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/ampoule-standard.png)
+![on, off et luminosité, transition](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/ampoule-standard.png)
 
 ### [3] Une ampoule à spectre blanc
-![périphérique Gestion des blancs](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/ampoule-ws.png)
+![on, off et luminosité, blanc, transition](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/ampoule-ws.png)
 
 ###  [4] Un ampoule de couleur<br>
-![périphérique Gestion des couleurs](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/ampoule-rgbw.png)
+![on, off et luminosité, couleur, transition](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/ampoule-rgbw.png)
 
 ## Périphériques testés
 
@@ -58,4 +58,15 @@ Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs confi
 * La mise en place d'un push vers l'eedomus via un autre système (ex Domoticz, Node-RED...) connecté au webservice de deCONZ permet d'obtenir les changements d'etat en temps réèl.
 
 ---
-* <sup>1</sup> Pour les ampoules Ikea, la valeur ct (Température) remontée par deCONZ est incorrecte, il faut donc désactiver le pooling sous eedomus (mettre à vide : "Requête de mise à jour" dans le paramètres Expert)
+<sup>1</sup> Pour les ampoules Ikea, la valeur ct (Température) remontée par deCONZ est incorrecte, il faut donc désactiver le pooling sous eedomus (mettre à vide : "Requête de mise à jour" dans le paramètres Expert)
+
+## Sources et historique des versions
+
+* [Sources](https://github.com/2bprog/eedomus-deconzact-plugin)
+* [Sources](https://github.com/2bprog/eedomus-deconzact-plugin/blob/master/CHANGELOG.md)
+
+## Liens 
+
+*<https://phoscon.de/en/conbee2>
+*<https://dresden-elektronik.github.io/deconz-rest-doc/>
+*<https://github.com/Smanar/Domoticz-deCONZ>
