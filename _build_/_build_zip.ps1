@@ -29,7 +29,7 @@ $json = ".\tmp\eedomus_plugin.json"
 
 # Garder mes icones    
 # ---------------------
-(Get-Content $json) | Foreach-Object {$_ -replace ':{1}.{0,}"{1}.{1,}"icon2b"'  , ''} | Set-Content $json
+(Get-Content $json) | Foreach-Object {$_ -replace '"{1}icon":{1}.{0,}"{1}.{1,}"icon2b"'  , '"icon"'} | Set-Content $json
 
 
 $compress = @{
