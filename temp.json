@@ -1,0 +1,324 @@
+		{	"device_id": "deczampred",		"create": "plugin.parameters.DZMODEL==4",		"parent_id": "deczamprgbcm",
+			"module_id": "41",
+			"type": "http",
+			"name_fr": "Ampoule plugin.name RGB  - Couleur (R)",
+			"icon": "lamp_03.png","icon2b":"Light01_LRGB.png",
+			"utilisation_id": "43",
+			"parameters": {
+				"VAR1": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
+				"VAR2": "",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=GET",
+				"RAW_XPATH": "//eedomus/e_colorR10",
+				"POLLING": "plugin.parameters.DZFREQ",
+				"CONVERT": "0"
+			},
+			"values": [
+				{				
+					"value": "0",
+					"description": "0%",
+					"icon": "lamp_03.png","icon2b":"Light01_R000.png", 
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newr=[RAW_VALUE]&use=1,1&set=1,1,0,1,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "10",
+					"description": "10%",
+					"icon": "lamp_03.png","icon2b":"Light01_R010.png", 
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newr=[RAW_VALUE]&use=1,1&set=1,1,0,1,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "20",
+					"description": "20%",
+					"icon": "lamp_03.png","icon2b":"Light01_R020.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newr=[RAW_VALUE]&use=1,1&set=1,1,0,1,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "30",
+					"description": "30%",
+					"icon": "lamp_03.png","icon2b":"Light01_R030.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newr=[RAW_VALUE]&use=1,1&set=1,1,0,1,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "40",
+					"description": "40%",
+					"icon": "lamp_03.png","icon2b":"Light01_R040.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newr=[RAW_VALUE]&use=1,1&set=1,1,0,1,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "50",
+					"description": "50%",
+					"icon": "lamp_03.png","icon2b":"Light01_R050.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newr=[RAW_VALUE]&use=1,1&set=1,1,0,1,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "60",
+					"description": "60%",
+					"icon": "lamp_03.png","icon2b":"Light01_R060.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newr=[RAW_VALUE]&use=1,1&set=1,1,0,1,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "70",
+					"description": "70%",
+					"icon": "lamp_03.png","icon2b":"Light01_R070.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newr=[RAW_VALUE]&use=1,1&set=1,1,0,1,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "80",
+					"description": "80%",
+					"icon": "lamp_03.png","icon2b":"Light01_R080.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newr=[RAW_VALUE]&use=1,1&set=1,1,0,1,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "90",
+					"description": "90%",
+					"icon": "lamp_03.png","icon2b":"Light01_R090.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newr=[RAW_VALUE]&use=1,1&set=1,1,0,1,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "100",
+					"description": "100%",
+					"icon": "lamp_03.png","icon2b":"Light01_R100.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newr=[RAW_VALUE]&use=1,1&set=1,1,0,1,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				}
+			]
+		},
+		{	"device_id": "deczampgreen",	"create": "plugin.parameters.DZMODEL==4",		"parent_id": "deczamprgbcm",
+			"module_id": "41",
+			"type": "http",
+			"name_fr": "Ampoule plugin.name RGB - Couleur (V)",
+			"icon": "lamp_04.png","icon2b":"Light01_LRGB.png",
+			"utilisation_id": "43",
+			"parameters": {
+				"VAR1": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
+				"VAR2": "",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=GET",
+				"RAW_XPATH": "//eedomus/e_colorG10",
+				"POLLING": "plugin.parameters.DZFREQ",
+				"CONVERT": "0"
+			},
+			"values": [
+				{				
+					"value": "0",
+					"description": "0%",
+					"icon": "lamp_04.png","icon2b":"Light01_V000.png", 
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newg=[RAW_VALUE]&use=1,1&set=1,1,1,0,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "10",
+					"description": "10%",
+					"icon": "lamp_04.png","icon2b":"Light01_V010.png", 
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newg=[RAW_VALUE]&use=1,1&set=1,1,1,0,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "20",
+					"description": "20%",
+					"icon": "lamp_04.png","icon2b":"Light01_V020.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newg=[RAW_VALUE]&use=1,1&set=1,1,1,0,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "30",
+					"description": "30%",
+					"icon": "lamp_04.png","icon2b":"Light01_V030.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newg=[RAW_VALUE]&use=1,1&set=1,1,1,0,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "40",
+					"description": "40%",
+					"icon": "lamp_04.png","icon2b":"Light01_V040.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newg=[RAW_VALUE]&use=1,1&set=1,1,1,0,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "50",
+					"description": "50%",
+					"icon": "lamp_04.png","icon2b":"Light01_V050.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newg=[RAW_VALUE]&use=1,1&set=1,1,1,0,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "60",
+					"description": "60%",
+					"icon": "lamp_04.png","icon2b":"Light01_V060.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newg=[RAW_VALUE]&use=1,1&set=1,1,1,0,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "70",
+					"description": "70%",
+					"icon": "lamp_04.png","icon2b":"Light01_V070.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newg=[RAW_VALUE]&use=1,1&set=1,1,1,0,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "80",
+					"description": "80%",
+					"icon": "lamp_04.png","icon2b":"Light01_V080.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newg=[RAW_VALUE]&use=1,1&set=1,1,1,0,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "90",
+					"description": "90%",
+					"icon": "lamp_04.png","icon2b":"Light01_V090.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newg=[RAW_VALUE]&use=1,1&set=1,1,1,0,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "100",
+					"description": "100%",
+					"icon": "lamp_04.png","icon2b":"Light01_V100.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newg=[RAW_VALUE]&use=1,1&set=1,1,1,0,1&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				}
+			]
+		},
+		{	"device_id": "deczampblue",		"create": "plugin.parameters.DZMODEL==4",		"parent_id": "deczamprgbcm",
+			"module_id": "41",
+			"type": "http",
+			"name_fr": "Ampoule plugin.name RGB - Couleur (B)",
+			"icon": "lamp_05.png","icon2b":"Light01_LRGB.png",
+			"utilisation_id": "43",
+			"parameters": {
+				"VAR1": "plugin.parameters.DZIP,plugin.parameters.DZAPIKEY,lights,plugin.parameters.DZIDDECONZ",
+				"VAR2": "",
+				"VAR3": "",
+				"value_type": "list",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=GET",
+				"RAW_XPATH": "//eedomus/e_colorB10",
+				"POLLING": "plugin.parameters.DZFREQ",
+				"CONVERT": "0"
+			},
+			"values": [
+				{				
+					"value": "0",
+					"description": "0%",
+					"icon": "lamp_05.png","icon2b":"Light01_B000.png", 
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newb=[RAW_VALUE]&use=1,1&set=1,1,1,1,0&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "10",
+					"description": "10%",
+					"icon": "lamp_05.png","icon2b":"Light01_B010.png", 
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newb=[RAW_VALUE]&use=1,1&set=1,1,1,1,0&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "20",
+					"description": "20%",
+					"icon": "lamp_05.png","icon2b":"Light01_B020.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newb=[RAW_VALUE]&use=1,1&set=1,1,1,1,0&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "30",
+					"description": "30%",
+					"icon": "lamp_05.png","icon2b":"Light01_B030.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newb=[RAW_VALUE]&use=1,1&set=1,1,1,1,0&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "40",
+					"description": "40%",
+					"icon": "lamp_05.png","icon2b":"Light01_B040.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newb=[RAW_VALUE]&use=1,1&set=1,1,1,1,0&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0" 
+				},
+				{
+					"value": "50",
+					"description": "50%",
+					"icon": "lamp_05.png","icon2b":"Light01_B050.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newb=[RAW_VALUE]&use=1,1&set=1,1,1,1,0&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "60",
+					"description": "60%",
+					"icon": "lamp_05.png","icon2b":"Light01_B060.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newb=[RAW_VALUE]&use=1,1&set=1,1,1,1,0&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "70",
+					"description": "70%",
+					"icon": "lamp_05.png","icon2b":"Light01_B070.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newb=[RAW_VALUE]&use=1,1&set=1,1,1,1,0&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "80",
+					"description": "80%",
+					"icon": "lamp_05.png","icon2b":"Light01_B080.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newb=[RAW_VALUE]&use=1,1&set=1,1,1,1,0&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "90",
+					"description": "90%",
+					"icon": "lamp_05.png","icon2b":"Light01_B090.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newb=[RAW_VALUE]&use=1,1&set=1,1,1,1,0&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				},
+				{
+					"value": "100",
+					"description": "100%",
+					"icon": "lamp_05.png","icon2b":"Light01_B100.png",
+					"http_url": "http://localhost/script/?exec=2B_deconz.php&vars=[VAR1]&action=PUT&json={\"on\":true, \"transitiontime\":!TR!, \"xy\":[!XY!], \"colormode\":\"xy\"}&newb=[RAW_VALUE]&use=1,1&set=1,1,1,1,0&api=[VAR2]",					
+					"http_type": "GET",
+					"hidden": "0"
+				}
+			]
+		},
