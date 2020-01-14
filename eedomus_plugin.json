@@ -6,7 +6,7 @@
 	"creation_date": "2019-11-21",
 	"modification_date": "2020-01-14",
 	"author": "Benjamin B.<br><a target='_blank' href='https://github.com/2bprog/eedomus-deconzact-plugin'>Sources sur github <img src='/img/external.png'></a>",
-	"description_fr": "Création d'un périphérique deConz de type actionneur",
+	"description_fr": "Création d'un périphérique deConz de type actionneur<br>deCONZ est l'application de dresden elektronik qui gère les clefs zigbee ConBee, ConBee II et RaspBee",
 	"description_en": "",
 	"description_es": "",
 	"description_it": "",
@@ -36,7 +36,7 @@
 			"parameter": "DZAPIKEYCR",
 			"description": "Clef API deCONZ ",			
             "xtype": "displayfield",
-            "field": "style: 'padding-top: 3px;', value: 'Pour l\\'obtenir : Connectez vous à <b>Phoscon-GW</b>, puis allez dans <b>Settings/Gateway/Advanced</b>,<br> cliquez sur <b>Athenticate app</b>, ensuite <a href=\\'javascript:eval(atob(\"d2luZG93Lm9wZW4oJy9zY3JpcHRfcHJveHkvP2V4ZWM9MkJfZGVjb256bGlzdC5waHAmaXA9Jytkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncGVyaXBoX3BhcmFtW2BEWklQYF0nKS52YWx1ZSsnJmNtZD1hcGkmcDI9aHRtbCZjb250cm9sbGVyX2lkPScrRXh0LmdldENtcCgnYXR0YWNoZWRfY29udHJvbGxlcl9pZCcpLmdldFZhbHVlKCksJ2RlY29ueicsJ3dpZHRoPTYwMCxoZWlnaHQ9MjAwLHRvb2xiYXI9bm8nKTs\"));\\'>cliquez ici</a>'"			
+            "field": "style: 'padding-top: 3px;', value: 'Pour l\\'obtenir : Connectez vous à <b>Phoscon-GW</b>, puis allez dans <b>Settings/Gateway/Advanced</b>,<br> cliquez sur <b>Authenticate app</b>, ensuite <a href=\\'javascript:eval(atob(\"d2luZG93Lm9wZW4oJy9zY3JpcHRfcHJveHkvP2V4ZWM9MkJfZGVjb256bGlzdC5waHAmaXA9Jytkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncGVyaXBoX3BhcmFtW2BEWklQYF0nKS52YWx1ZSsnJmNtZD1hcGkmcDI9aHRtbCZjb250cm9sbGVyX2lkPScrRXh0LmdldENtcCgnYXR0YWNoZWRfY29udHJvbGxlcl9pZCcpLmdldFZhbHVlKCksJ2RlY29ueicsJ3dpZHRoPTYwMCxoZWlnaHQ9MjAwLHRvb2xiYXI9bm8nKTs\"));\\'>cliquez ici</a>'"			
 		},
 		{
 			"parameter": "DZAPIKEY",
