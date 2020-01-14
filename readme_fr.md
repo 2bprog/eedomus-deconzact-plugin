@@ -19,21 +19,24 @@ Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs confi
 ![Recherche de serveur](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/serveur.png)
 
 ### Clef API
-* Pour communiquer avec deCONZ, le système a besoin d'un clef d'accès, si vous ne la connaissez pas , vous pouvez en créer une nouvelle avec le procédure suivent : Connectez-vous a **Phoscon-GW** puis allez dans **Settings/Gateway/Advanced**  puis, cliquez sur **Athenticate app** )
+* Pour communiquer avec deCONZ, le système a besoin d'un clef d'accès, si vous ne la connaissez pas  vous pouvez en créer une nouvelle avec le procédure suivent : Connectez-vous a **Phoscon-GW** puis allez dans **Settings/Gateway/Advanced**  puis, cliquez sur **Athenticate app**  (le paramètre IP + Port doit préalablement être renseigné)
 
 ![Activation autentification deCONZ](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-authenticate.png)
 
-
+* Ensuite vous pouvez cliquer sur "Cliquez ici", si tout ce passe bien une fenêtre vous affichera votre nouvelle Clef API, sinon un messgae d'erreur sera affiché.
+Clef OK : 
+![Clef OK](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-ok.png)
+Erreur : 
 ![Clef Erreur](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-erreur.png)
 
 
-![Clef OK](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-ok.png)
+
 
 
 
 ### Identifiant de l'actionneur 
 
-* 
+* Cet identifiant corresponds au périphérique que vous voulez gérer, vous pouvez en obtenir la liste en cliquant sur le lien "Liste des actionneurs" (Les parametres IP + Port et Clef API doivent préalablement être renseignés)
 
 ![Liste des actionneurs](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/liste-actionneurs.png)
 
