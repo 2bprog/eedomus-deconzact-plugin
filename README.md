@@ -4,10 +4,10 @@ Plugin eedomus pour piloter les actionneurs deCONZ
 
 ## Actionneurs gérés
 
-1. Prise (On / Off) 
-2. Ampoule (On / Off / Luminosité   )
-3. Ampoule Spectre blanc (On / Off / Luminosité / Blanc ) <sup>1</sup>
-4. Ampoule RBGW (On / Off / Luminosité / Couleur )
+* [1] Prise (On / Off)
+* [2] Ampoule (On / Off / Luminosité / Transition)
+* [3] Ampoule Spectre blanc (On / Off / Luminosité / Blanc / Transition) <sup>1</sup>
+* [4] Ampoule RBGW (On / Off / Luminosité / Couleur / Transition)
 
 ## Périphériques testés 
 
