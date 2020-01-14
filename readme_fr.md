@@ -23,10 +23,13 @@ Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs confi
 
 ![Activation autentification deCONZ](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-authenticate.png)
 
-* Ensuite vous pouvez cliquer sur "Cliquez ici", si tout ce passe bien une fenêtre vous affichera votre nouvelle Clef API, sinon un messgae d'erreur sera affiché.
-Clef OK : 
+* Ensuite vous pouvez cliquer sur "Cliquez ici", 
+si tout ce passe bien une fenêtre vous affichera votre nouvelle Clef API, sinon un messgae d'erreur sera affiché.
+<br>
+**Clef OK :** <br>
 ![Clef OK](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-ok.png)
-Erreur : 
+<br>
+**Erreur :** <br>
 ![Clef Erreur](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-erreur.png)
 
 
@@ -92,10 +95,10 @@ Erreur :
 ## Sources et historique des versions
 
 * [Sources](https://github.com/2bprog/eedomus-deconzact-plugin)
-* [Sources](https://github.com/2bprog/eedomus-deconzact-plugin/blob/master/CHANGELOG.md)
+* [Historique des varsion ](https://github.com/2bprog/eedomus-deconzact-plugin/blob/master/CHANGELOG.md)
 
 ## Liens 
 
-*<https://phoscon.de/en/conbee2>
-*<https://dresden-elektronik.github.io/deconz-rest-doc/>
-*<https://github.com/Smanar/Domoticz-deCONZ>
+* <https://phoscon.de/en/conbee2/install>
+* <https://dresden-elektronik.github.io/deconz-rest-doc/>
+* <https://github.com/Smanar/Domoticz-deCONZ>
