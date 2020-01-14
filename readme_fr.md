@@ -1,34 +1,46 @@
-Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs configurés dans deCONZ.
+Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs configurés dans deCONZ. deCONZ est l'application de dresden elektronik qui gère les clefs zigbee ConBee, ConBee II et RaspBee
+
 
 ## Prérequis
 
-Un serveur deCONZ installé
+* Un serveur deCONZ installé 
 
 ## Installation
 
-Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store eedomus" / "Actionneurs - deConz" / "Créer"
+* Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store eedomus" / "Actionneurs - deConz" / "Créer"
 
 ## Champs a configurer : 
 
-![Configuration actionneur deCONZ](https://i.ibb.co/pyLkDfS/readme01.png)
+![Configuration actionneur deCONZ](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/deconzact-config.png)
 
-* IP + Port : Adresse ip et port (facultaf si votre serveur utiliser le port 80) de votre serveur
-* Clef API : l'Identification l'acces a l'API deCONZ (pour créer une nouvelle clef d'acces : Connectez vous a **Phoscon-GW** puis allez dans **Settings/Gateway/Advanced**  puis, cliquez sur **Athenticate app** )
-* Identifiant de l'actionneur : TODO
+### IP + Port
+* Adresse ip et port (facultaf si votre serveur utiliser le port 80) de votre serveur. Vous pouvez egalement cliquer sur "Recherche de serveur" pour afficher un fenêtre avec la liste des serveurs deCONZ présent sur votre réseau.
+
+![Recherche de serveur](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/serveur.png)
+
+### Clef API
+* pour communiquer avec deCONZ, le système a besoin d'un clef d'accès, pour la créer : Connectez vous a **Phoscon-GW** puis allez dans **Settings/Gateway/Advanced**  puis, cliquez sur **Athenticate app** )
+
+
+### Identifiant de l'actionneur 
+*
+
+
 * Modèles d'actionneurs :  Prise, Ampoule standard, Ampoule spectre blanc<sup>1</sup>, Ampoule couleur
 
 ## Périphériques crées en fonction de votre sélection : 
-[1] pour une prise<br>
-![on, off](https://i.ibb.co/gSvngm7/readme02.png)
 
-[2] pour les ampoules<br>
-![ on, off et luminosité](https://i.ibb.co/Kmgcct5/readme04.png)
+### [1] Une prise 
+![on, off](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/prise.png)
 
-[3] Pour les ampoules à spectre blanc<br>
-![périphérique Gestion des blancs](https://i.ibb.co/4pr29mn/readme05.png)
+### [2] Une ampoule standard
+![ on, off et luminosité](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/ampoule-standard.png)
 
-[4] Pour les ampoules couleur<br>
-![périphérique Gestion des couleurs](https://i.ibb.co/nRtTWmf/readme03.png)
+### [3] Une ampoule à spectre blanc
+![périphérique Gestion des blancs](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/ampoule-ws.png)
+
+###  [4] Un ampoule de couleur<br>
+![périphérique Gestion des couleurs](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/ampoule-rgbw.png)
 
 ## Périphériques testés
 
@@ -43,7 +55,7 @@ Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store ee
 * Ikea - Tradfri Ampoule E27 CWS opal 600lm [4]
 
 ## Remarques 
-La mise en place d'un push vers l'eedomus via un autre système (ex Domoticz, Node-RED...) connecté au webservice de deCONZ permet d'obtenir les changements d'etat en temps réèl.
+* La mise en place d'un push vers l'eedomus via un autre système (ex Domoticz, Node-RED...) connecté au webservice de deCONZ permet d'obtenir les changements d'etat en temps réèl.
 
 ---
-<sup>1</sup> Pour les ampoules Ikea la valeur ct remontée par deCONZ est incorrecte (toujours a 439), il faut donc désactiver le pooling sous eedomus.
+* <sup>1</sup> Pour les ampoules Ikea, la valeur ct (Température) remontée par deCONZ est incorrecte, il faut donc désactiver le pooling sous eedomus (mettre à vide : "Requête de mise à jour" dans le paramètres Expert)
