@@ -14,19 +14,45 @@ Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs confi
 ![Configuration actionneur deCONZ](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/deconzact-config.png)
 
 ### IP + Port
-* Adresse ip et port (facultaf si votre serveur utiliser le port 80) de votre serveur. Vous pouvez egalement cliquer sur "Recherche de serveur" pour afficher un fenêtre avec la liste des serveurs deCONZ présent sur votre réseau.
+* Adresse ip et port de votre serveur. Vous pouvez également cliquer sur "Recherche de serveur" pour afficher une fenêtre avec la liste des serveurs deCONZ présent sur votre réseau.
 
 ![Recherche de serveur](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/serveur.png)
 
 ### Clef API
-* pour communiquer avec deCONZ, le système a besoin d'un clef d'accès, pour la créer : Connectez vous a **Phoscon-GW** puis allez dans **Settings/Gateway/Advanced**  puis, cliquez sur **Athenticate app** )
+* Pour communiquer avec deCONZ, le système a besoin d'un clef d'accès, si vous ne la connaissez pas , vous pouvez en créer une nouvelle avec le procédure suivent : Connectez-vous a **Phoscon-GW** puis allez dans **Settings/Gateway/Advanced**  puis, cliquez sur **Athenticate app** )
+
+![Activation autentification deCONZ](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-authenticate.png)
+
+
+![Clef Erreur](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-erreur.png)
+
+
+![Clef OK](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-ok.png)
+
 
 
 ### Identifiant de l'actionneur 
-*
 
+* 
 
-* Modèles d'actionneurs :  Prise, Ampoule standard, Ampoule spectre blanc<sup>1</sup>, Ampoule couleur
+![Liste des actionneurs](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/liste-actionneurs.png)
+
+### Modèles d'actionneurs
+
+* Prise, Ampoule standard, Ampoule spectre blanc<sup>1</sup>, Ampoule couleur
+
+### Fréquence d'actualisation
+
+* Permet de fixer le temps de rafraichement des valeurs du périphérique (en minutes).
+
+### Transition par défaut
+
+* Pour les ampoules, fixe la valeur par défaut de transition entre 2 changements d'état.
+
+### ON fixé par défaut
+
+* Pour les Ampoules, cela permet de modifier automatique son état, si une action annexe est effectuée (ex : fixer la couleur, utiliser les alertes, ...).
+
 
 ## Périphériques crées en fonction de votre sélection : 
 
