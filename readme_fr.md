@@ -94,7 +94,7 @@ si tout ce passe bien une fenêtre vous affichera votre nouvelle Clef API, sinon 
 ## Sources et historique des versions
 
 * [Sources](https://github.com/2bprog/eedomus-deconzact-plugin)
-* [Historique des varsion ](https://github.com/2bprog/eedomus-deconzact-plugin/blob/master/CHANGELOG.md)
+* [Historique des versions](https://github.com/2bprog/eedomus-deconzact-plugin/blob/master/CHANGELOG.md)
 
 ## Liens 
 
