@@ -1,4 +1,4 @@
-# eedomus-deconzact-plugin (DEVELOPPEMENT EN COURS)
+# eedomus-deconzact-plugin
 
 Plugin eedomus pour piloter les actionneurs deCONZ
 
