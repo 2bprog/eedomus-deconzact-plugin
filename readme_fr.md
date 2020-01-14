@@ -9,22 +9,21 @@ Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs confi
 
 * Cliquez sur "Configuration" / "Ajouter ou supprimer un périphérique" / "Store eedomus" / "Actionneurs - deConz" / "Créer"
 
-## Champs a configurer : 
+## Champs à configurer : 
 
 ![Configuration actionneur deCONZ](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/deconzact-config.png)
 
 ### IP + Port
-* Adresse ip et port de votre serveur. Vous pouvez également cliquer sur "Recherche de serveur" pour afficher une fenêtre avec la liste des serveurs deCONZ présent sur votre réseau.
+* Adresse IP et port de votre serveur. Vous pouvez également cliquer sur "Recherche de serveur" pour afficher une fenêtre avec la liste des serveurs deCONZ présent sur votre réseau.
 
 ![Recherche de serveur](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/serveur.png)
 
 ### Clef API
-* Pour communiquer avec deCONZ, le système a besoin d'un clef d'accès, si vous ne la connaissez pas  vous pouvez en créer une nouvelle avec le procédure suivent : Connectez-vous a **Phoscon-GW** puis allez dans **Settings/Gateway/Advanced**  puis, cliquez sur **Athenticate app**  (le paramètre IP + Port doit préalablement être renseigné)
+* Pour communiquer avec deCONZ, le système a besoin d'un clef d'accès, si vous ne la connaissez pas, vous pouvez en créer une nouvelle avec le procédure suivante : Connectez-vous a **Phoscon-GW** puis allez dans **Settings/Gateway/Advanced**  puis, cliquez sur **Authenticate app**  (le paramètre IP + Port doit préalablement être renseigné)
 
-![Activation autentification deCONZ](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-authenticate.png)
+![Activation authentification deCONZ](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-authenticate.png)
 
-* Ensuite vous pouvez cliquer sur "Cliquez ici", 
-si tout ce passe bien une fenêtre vous affichera votre nouvelle Clef API, sinon un messgae d'erreur sera affiché.
+* Ensuite vous pouvez cliquer sur "Cliquez ici" : Si tout se passe bien une fenêtre affichera votre nouvelle Clef API, sinon un message d'erreur sera affiché.
 
 **Clef OK :** 
 
@@ -38,7 +37,7 @@ si tout ce passe bien une fenêtre vous affichera votre nouvelle Clef API, sinon 
 
 ### Identifiant de l'actionneur 
 
-* Cet identifiant corresponds au périphérique que vous voulez gérer, vous pouvez en obtenir la liste en cliquant sur le lien "Liste des actionneurs" (Les parametres IP + Port et Clef API doivent préalablement être renseignés)
+* Cet identifiant correspond au périphérique que vous voulez gérer, vous pouvez en obtenir la liste en cliquant sur le lien "Liste des actionneurs" (Les paramètres IP + Port et Clef API doivent préalablement être renseignés)
 
 ![Liste des actionneurs](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/liste-actionneurs.png)
 
@@ -70,7 +69,7 @@ si tout ce passe bien une fenêtre vous affichera votre nouvelle Clef API, sinon 
 ### [3] Une ampoule à spectre blanc
 ![on, off et luminosité, blanc, transition](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/ampoule-ws.png)
 
-###  [4] Un ampoule de couleur<br>
+###  [4] Un ampoule de couleur
 ![on, off et luminosité, couleur, transition](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/ampoule-rgbw.png)
 
 ## Périphériques testés
@@ -86,7 +85,7 @@ si tout ce passe bien une fenêtre vous affichera votre nouvelle Clef API, sinon 
 * Ikea - Tradfri Ampoule E27 CWS opal 600lm [4]
 
 ## Remarques 
-* La mise en place d'un push vers l'eedomus via un autre système (ex Domoticz, Node-RED...) connecté au webservice de deCONZ permet d'obtenir les changements d'etat en temps réèl.
+* La mise en place d'un push vers l'eedomus via un autre système (ex Domoticz, Node-RED...) connecté au webservice de deCONZ permet d'obtenir les changements d'état en temps réel.
 
 ---
 <sup>1</sup> Pour les ampoules Ikea, la valeur ct (Température) remontée par deCONZ est incorrecte, il faut donc désactiver le pooling sous eedomus (mettre à vide : "Requête de mise à jour" dans le paramètres Expert)
