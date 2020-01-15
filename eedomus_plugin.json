@@ -2,11 +2,11 @@
 	"plugin_id": "bbdeconzact",
 	"name_fr": "Actionneurs - deConz",
 	"icon": "deconzact.png",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"creation_date": "2019-11-21",
-	"modification_date": "2020-01-14",
+	"modification_date": "2020-01-15",
 	"author": "Benjamin B.<br><a target='_blank' href='https://github.com/2bprog/eedomus-deconzact-plugin'>Sources sur github <img src='/img/external.png'></a>",
-	"description_fr": "Création d'un périphérique deConz de type actionneur<br>deCONZ est l'application de dresden elektronik qui gère les clefs zigbee ConBee, ConBee II et RaspBee",
+	"description_fr": "<b>Création d'un périphérique deCONZ de type actionneur : </b><br><br>Prise, Ampoule, Ampoule Spectre blanc, Ampoule RBGW<br><br>deCONZ est l'application de dresden elektronik qui gère les clefs zigbee ConBee, ConBee II et RaspBee",
 	"description_en": "",
 	"description_es": "",
 	"description_it": "",
@@ -90,7 +90,14 @@
 			"description": "ON fixé en interne",
 			"xtype": "checkbox",
 			"field": "style: 'margin-top: 6px;', checked: true"
+		},
+		{		
+			"parameter": "DZREM1",
+			"description": "",			
+            "xtype": "displayfield",
+            "field": "style: 'padding-top: 15px;', value: '<b>Remarque :</b> La mise en place d\\'un push vers l\\'eedomus via un autre système (ex Domoticz, Node-RED...)<br> connecté au webservice de deCONZ permet d\\'obtenir les changements d\\'etat en temps réèl.'"			
 		}
+
 
 	],
 	"scripts": [
