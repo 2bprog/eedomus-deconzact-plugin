@@ -29,7 +29,6 @@ Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs confi
 
 ![Clef OK](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-ok.png)
 
-
 **Erreur :**
 
 ![Clef Erreur](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-erreur.png)
