@@ -68,7 +68,7 @@ Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs confi
 ### [3] Une ampoule à spectre blanc
 ![on, off et luminosité, blanc, transition](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/ampoule-ws.png)
 
-###  [4] Un ampoule de couleur
+###  [4] Une ampoule de couleur
 ![on, off et luminosité, couleur, transition](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/ampoule-rgbw.png)
 
 ## Périphériques testés
