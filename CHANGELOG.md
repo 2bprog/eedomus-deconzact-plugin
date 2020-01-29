@@ -1,7 +1,7 @@
 ## ENCOURS
 
+* TODO Ajout d'un widget pour afficher la liste des actionneurs
 * Correction  des transition 2s
-
 
 ## v0.0.2-beta (14/01/2020)
 
