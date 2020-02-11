@@ -1,7 +1,8 @@
 ## ENCOURS
 
 * TODO Ajout d'un widget pour afficher la liste des actionneurs
-* Correction  des transition 2s
+* Changement de nom des fichiers php pour eviter les conflits dans l'eedomus
+* Correction de la transition 2s
 
 ## v0.0.2-beta (14/01/2020)
 
