@@ -11,7 +11,7 @@ Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs confi
 
 ## Champs à configurer : 
 
-![Configuration actionneur deCONZ](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/deconzact-config.png)
+![Configuration actionneur deCONZ](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/deconzact-config-0.0.3.png)
 
 ### IP + Port
 * Adresse IP et port de votre serveur. Vous pouvez également enregistrer l'ip et le port puis les charger lors d'une utilisation ultérieure.
