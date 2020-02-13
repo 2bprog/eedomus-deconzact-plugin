@@ -1,8 +1,9 @@
-## ENCOURS
+## v0.0.3-beta (13/02/2020)
 
-* TODO Ajout d'un widget pour afficher la liste des actionneurs
-* Changement de nom des fichiers php pour eviter les conflits dans l'eedomus
+* Chargement / Enregistrement IP:Port et Clef API
+* Modification du nom des fichiers php
 * Correction de la transition 2s
+* Fréquence d'actualisation à 5 min. par défaut
 
 ## v0.0.2-beta (14/01/2020)
 

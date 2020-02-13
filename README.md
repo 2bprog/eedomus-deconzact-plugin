@@ -14,12 +14,14 @@ Ce plugin eedomus permet de piloter les prises et ampoules des actionneurs confi
 ![Configuration actionneur deCONZ](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/deconzact-config.png)
 
 ### IP + Port
-* Adresse IP et port de votre serveur. Vous pouvez également cliquer sur "Recherche de serveur" pour afficher une fenêtre avec la liste des serveurs deCONZ présent sur votre réseau.
+* Adresse IP et port de votre serveur. Vous pouvez également enregistrer l'ip et le port puis les charger lors d'une utilisation ultérieure.
+* Vous pouvez  cliquer sur "Recherche de serveur" pour afficher une fenêtre avec la liste des serveurs deCONZ présent sur votre réseau.
 
 ![Recherche de serveur](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/serveur.png)
 
 ### Clef API
 * Pour communiquer avec deCONZ, le système a besoin d'un clef d'accès, si vous ne la connaissez pas, vous pouvez en créer une nouvelle avec le procédure suivante : Connectez-vous a **Phoscon-GW** puis allez dans **Settings/Gateway/Advanced**  puis, cliquez sur **Authenticate app**  (le paramètre IP + Port doit préalablement être renseigné)
+* Vous pouvez également enregistrer la clef API puis la charger lors d'une utilisation ultérieure.
 
 ![Activation authentification deCONZ](https://raw.githubusercontent.com/2bprog/eedomus-deconzact-plugin/master/doc/key-authenticate.png)
 
