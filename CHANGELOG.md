@@ -1,3 +1,7 @@
+## v0.0.4-beta (03/09/2020)
+
+* Modification dans la gestion de l'indicateur de batterie eedomus
+
 ## v0.0.3-beta (13/02/2020)
 
 * Chargement / Enregistrement IP:Port et Clef API
