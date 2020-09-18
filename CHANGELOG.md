@@ -1,3 +1,7 @@
+## v0.0.X-beta
+
+* 
+
 ## v0.0.4-beta (03/09/2020)
 
 * Modification dans la gestion de l'indicateur de batterie eedomus
